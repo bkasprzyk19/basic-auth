@@ -20,16 +20,16 @@ const sequelize = new Sequelize(DATABASE_URL);
 app.use(express.urlencoded({ extended: true }));
 
 // Create a Sequelize model
-const Users = sequelize.define('User', {
-  username: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  password: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-});
+// const Users = sequelize.define('User', {
+//   username: {
+//     type: DataTypes.STRING,
+//     allowNull: false,
+//   },
+//   password: {
+//     type: DataTypes.STRING,
+//     allowNull: false,
+//   },
+// });
 
 // Signup Route -- create a new user
 // Two ways to test this route with httpie
