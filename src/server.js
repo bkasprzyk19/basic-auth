@@ -9,6 +9,9 @@ require('dotenv').config();
 // const Users = require('./auth/models/users-model.js');
 // let DATABASE_URL = process.env.DATABASE_URL || 'sqlite:memory';
 
+const error404 = require('./middleware/404');
+const error500 = require('./middleware/500');
+
 const router = require('./auth/router.js');
 
 
@@ -31,6 +34,8 @@ app.use(express.json());
 // Create a Sequelize model
 
 app.use(router);
+app.use('*', error404);
+app.use(error500);
 
 
 // Signup Route -- create a new user
