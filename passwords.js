@@ -3,7 +3,7 @@
 const base64 = require('base-64');
 const bcrypt = require('bcrypt');
 
-const username = 'Harvey';
+const username = 'Bkaspr';
 const password = 'supersecret';
 const userpass = `${username}:${password}`;
 
