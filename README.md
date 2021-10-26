@@ -8,7 +8,7 @@ B. Kasprzyk
 
 [GitHub](https://github.com/bkasprzyk19/basic-auth)
 
-[Actions](https://github.com/bkasprzyk19/basic-auth/actions/new)
+[Actions](https://github.com/bkasprzyk19/basic-auth/actions)
 
 
 ![img](./401-lab6.PNG)
