@@ -1,6 +1,6 @@
 'use strict';
 
-const { sequelize } = require('./src/server.js');
+const { sequelize } = require('./src/auth/models/users-model');
 const app = require('./src/server.js');
 const PORT = process.env.PORT || 3000;
 
