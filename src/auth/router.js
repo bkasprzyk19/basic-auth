@@ -15,18 +15,19 @@ Users.beforeCreate(async user => {
 });
 
 
-router.post('/signup', async (req, res) => {
+router.post('/signup', async (req, res, next) => {
     try {
       req.body.password = await bcrypt.hash(req.body.password, 10);
       const record = await Users.create(req.body);
       // console.log(record);
       res.status(200).json(record);
     } catch (e) {
-      res.status(403).send('Error Creating User');
+        res.status(403).send('Error Creating User');
+        next(e);
     }
 });
   
-router.post('/signin', async (req, res) => {
+router.post('/signin', async (req, res, next) => {
     /*
       req.headers.authorization is : "Basic sdkjdsljd="
       To get username and password from this, take the following steps:
@@ -58,7 +59,8 @@ router.post('/signin', async (req, res) => {
         throw new Error('Invalid User');
       }
     } catch (error) {
-      res.status(403).send('Invalid Login');
+        res.status(403).send('Invalid Login');
+        next(error);
     }
 });
   

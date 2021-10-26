@@ -5,9 +5,12 @@ const express = require('express');
 // const bcrypt = require('bcrypt');
 // const base64 = require('base-64');
 require('dotenv').config();
-const { Sequelize, DataTypes } = require('sequelize');
-const Users = require('./auth/models/users-model.js');
-let DATABASE_URL = process.env.DATABASE_URL || 'sqlite:memory';
+// const { Sequelize, DataTypes } = require('sequelize');
+// const Users = require('./auth/models/users-model.js');
+// let DATABASE_URL = process.env.DATABASE_URL || 'sqlite:memory';
+
+const error404 = require('./middleware/404');
+const error500 = require('./middleware/500');
 
 const router = require('./auth/router.js');
 
@@ -18,7 +21,7 @@ const app = express();
 // Process JSON input and put the data on req.body
 app.use(express.json());
 
-const sequelize = new Sequelize(DATABASE_URL);
+// const sequelize = new Sequelize(DATABASE_URL);
 
 // Process FORM intput and put the data on req.body
 // app.use(express.urlencoded({ extended: true }));
@@ -31,6 +34,8 @@ const sequelize = new Sequelize(DATABASE_URL);
 // Create a Sequelize model
 
 app.use(router);
+app.use('*', error404);
+app.use(error500);
 
 
 // Signup Route -- create a new user
@@ -99,7 +104,7 @@ app.use(router);
 
 module.exports = {
   server: app,
-  sequelize,
+  
   start: port => {
     app.listen(port, () => console.log('Server is up')), port;
   },
